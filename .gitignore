@@ -7,3 +7,4 @@ db/data/
 .medusa/
 .next/
 tsconfig.tsbuildinfo
+produccion.local.env

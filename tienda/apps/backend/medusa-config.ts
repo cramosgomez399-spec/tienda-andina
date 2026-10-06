@@ -5,6 +5,11 @@ loadEnv(process.env.NODE_ENV || 'development', process.cwd())
 module.exports = defineConfig({
   projectConfig: {
     databaseUrl: process.env.DATABASE_URL,
+    // Bases de datos administradas (Supabase) exigen SSL; en local no se usa.
+    databaseDriverOptions:
+      process.env.DATABASE_SSL === 'true'
+        ? { connection: { ssl: { rejectUnauthorized: false } } }
+        : {},
     http: {
       storeCors: process.env.STORE_CORS!,
       adminCors: process.env.ADMIN_CORS!,
@@ -12,6 +17,10 @@ module.exports = defineConfig({
       jwtSecret: process.env.JWT_SECRET,
       cookieSecret: process.env.COOKIE_SECRET,
     }
+  },
+  admin: {
+    // Permite servir solo la API si el servidor no tiene memoria para compilar el panel.
+    disable: process.env.DISABLE_ADMIN === 'true',
   },
   modules: [
     {
