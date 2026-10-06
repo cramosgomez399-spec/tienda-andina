@@ -82,10 +82,16 @@ const CartDropdown = ({
       <Popover className="relative h-full">
         <PopoverButton className="h-full">
           <LocalizedClientLink
-            className="hover:text-ui-fg-base"
+            className="inline-flex items-center gap-2 rounded-full bg-anil px-4 py-2 font-semibold text-white hover:bg-anil-oscuro"
             href="/cart"
             data-testid="nav-cart-link"
-          >{`Carrito (${totalItems})`}</LocalizedClientLink>
+            aria-label={`Carrito, ${totalItems} productos`}
+          >
+            Carrito
+            <span className="grid min-w-[1.5rem] place-items-center rounded-full bg-qolle px-1.5 text-xs font-bold text-anil-oscuro">
+              {totalItems}
+            </span>
+          </LocalizedClientLink>
         </PopoverButton>
         <Transition
           show={cartDropdownOpen}
@@ -99,7 +105,7 @@ const CartDropdown = ({
         >
           <PopoverPanel
             static
-            className="hidden small:block absolute top-[calc(100%+1px)] right-0 bg-white border-x border-b border-gray-200 w-[420px] text-ui-fg-base"
+            className="hidden small:block absolute top-[calc(100%+1px)] right-0 bg-white border border-ui-border-base rounded-b-xl shadow-lg w-[420px] text-ui-fg-base"
             data-testid="nav-cart-dropdown"
           >
             <div className="p-4 flex items-center justify-center">

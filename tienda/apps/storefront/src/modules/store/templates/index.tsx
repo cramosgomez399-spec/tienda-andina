@@ -12,9 +12,17 @@ const PRODUCT_LIMIT = 12
 
 const StoreTemplate = ({ currencyCode }: { currencyCode: string }) => {
   return (
-    <div className="py-6 content-container" data-testid="category-container">
-      <div className="mb-8 text-2xl-semi">
-        <h1 data-testid="store-page-title">Todos los productos</h1>
+    <div className="py-10 content-container" data-testid="category-container">
+      <div className="mb-10 flex flex-col gap-2">
+        <h1
+          className="text-4xl font-extrabold text-anil small:text-5xl"
+          data-testid="store-page-title"
+        >
+          Todos los productos
+        </h1>
+        <p className="text-ui-fg-subtle">
+          Filtra por talla, color o categoría, y ordena por precio.
+        </p>
       </div>
 
       <div className="flex flex-col small:flex-row small:items-start">

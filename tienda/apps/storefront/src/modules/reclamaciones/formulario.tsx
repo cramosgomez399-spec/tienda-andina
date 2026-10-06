@@ -106,7 +106,7 @@ export default function FormularioReclamo() {
   if (hoja) {
     return (
       <div className="flex flex-col gap-y-4 rounded-lg border border-ui-border-base p-6" role="status">
-        <Heading level="h2" className="text-2xl">
+        <Heading level="h2" className="text-2xl font-bold text-anil">
           Hoja n.º {hoja.codigo} registrada
         </Heading>
         <Text className="text-ui-fg-subtle">
@@ -127,7 +127,7 @@ export default function FormularioReclamo() {
   return (
     <form onSubmit={enviar} noValidate className="flex flex-col gap-y-8">
       <section className="flex flex-col gap-y-4">
-        <Heading level="h2" className="txt-xlarge-plus">
+        <Heading level="h2" className="text-2xl font-bold text-anil">
           1. Identificación del consumidor
         </Heading>
         <Campo id="nombre" etiqueta="Nombre completo" error={errores.nombre}>
@@ -177,7 +177,7 @@ export default function FormularioReclamo() {
       </section>
 
       <section className="flex flex-col gap-y-4">
-        <Heading level="h2" className="txt-xlarge-plus">
+        <Heading level="h2" className="text-2xl font-bold text-anil">
           2. Identificación del bien contratado
         </Heading>
         <fieldset className="flex gap-x-6">
@@ -203,7 +203,7 @@ export default function FormularioReclamo() {
       </section>
 
       <section className="flex flex-col gap-y-4">
-        <Heading level="h2" className="txt-xlarge-plus">
+        <Heading level="h2" className="text-2xl font-bold text-anil">
           3. Detalle de la reclamación
         </Heading>
         <fieldset className="flex flex-col gap-y-2">

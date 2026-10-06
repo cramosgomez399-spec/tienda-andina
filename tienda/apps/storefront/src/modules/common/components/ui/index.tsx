@@ -43,6 +43,9 @@ export const Heading = forwardRef<HTMLHeadingElement, HeadingProps>(
         ref={ref}
         className={clsx(
           "font-semibold",
+          // Títulos en añil salvo que el uso pida otro color explícitamente.
+          !/\btext-(ui-fg|white|anil|cochinilla|qolle|chillca)/.test(className ?? "") &&
+            "text-anil",
           Component === "h1" && "text-3xl",
           Component === "h2" && "text-2xl",
           Component === "h3" && "text-xl",
@@ -82,11 +85,11 @@ export const Button = forwardRef<HTMLButtonElement, ButtonProps>(
         ref={ref}
         disabled={disabled || isLoading}
         className={clsx(
-          "inline-flex gap-2 items-center justify-center rounded-md font-medium transition-colors focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-offset-2 disabled:pointer-events-none disabled:opacity-50",
-          variant === "primary" && "bg-black text-white hover:bg-gray-800",
+          "inline-flex gap-2 items-center justify-center rounded-lg font-semibold transition-colors focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-cochinilla focus-visible:ring-offset-2 disabled:pointer-events-none disabled:opacity-50",
+          variant === "primary" && "bg-cochinilla text-white hover:bg-cochinilla-oscuro",
           variant === "secondary" &&
-            "bg-white text-black border border-gray-200 hover:bg-gray-50",
-          variant === "transparent" && "bg-transparent hover:bg-gray-100",
+            "bg-white text-anil border border-anil/25 hover:border-anil hover:bg-anil-claro",
+          variant === "transparent" && "bg-transparent hover:bg-lana",
           size === "small" && "h-8 px-3 text-sm",
           size === "medium" && "h-10 px-4",
           size === "large" && "h-12 px-6 text-lg",
@@ -94,7 +97,7 @@ export const Button = forwardRef<HTMLButtonElement, ButtonProps>(
         )}
         {...props}
       >
-        {isLoading ? "Loading..." : children}
+        {isLoading ? "Cargando…" : children}
       </button>
     )
   }

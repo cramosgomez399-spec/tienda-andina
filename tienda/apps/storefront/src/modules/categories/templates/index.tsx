@@ -50,12 +50,12 @@ export default function CategoryTemplate({
         hideOptionsPicker
       />
       <div className="w-full">
-        <div className="flex flex-row mb-8 text-2xl-semi gap-4">
+        <div className="flex flex-row flex-wrap items-baseline mb-8 gap-4 font-titulos text-4xl font-extrabold text-anil small:text-5xl">
           {parents &&
             parents.map((parent) => (
               <span key={parent.id} className="text-ui-fg-subtle">
                 <LocalizedClientLink
-                  className="mr-4 hover:text-black"
+                  className="mr-4 hover:text-cochinilla"
                   href={`/categories/${parent.handle}`}
                   data-testid="sort-by-link"
                 >

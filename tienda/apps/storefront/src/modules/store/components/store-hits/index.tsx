@@ -81,17 +81,17 @@ const StoreHits = ({ hitsPerPage, currencyCode }: StoreHitsProps) => {
               <li key={hit.objectID}>
                 <LocalizedClientLink
                   href={`/products/${hit.handle}`}
-                  className="group"
+                  className="group block"
                 >
                   <div data-testid="product-wrapper">
                     <Thumbnail thumbnail={hit.thumbnail} size="full" />
-                    <div className="flex txt-compact-medium mt-4 justify-between">
-                      <Text
-                        className="text-ui-fg-subtle"
+                    <div className="mt-4 flex flex-col gap-1">
+                      <h3
+                        className="font-titulos text-lg font-bold leading-tight text-anil group-hover:text-cochinilla"
                         data-testid="product-title"
                       >
                         {hit.title}
-                      </Text>
+                      </h3>
                       <HitPrice hit={hit} currencyCode={currencyCode} />
                     </div>
                   </div>

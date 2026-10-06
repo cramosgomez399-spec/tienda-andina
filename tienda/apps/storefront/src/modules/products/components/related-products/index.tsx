@@ -47,15 +47,10 @@ export default async function RelatedProducts({
   }
 
   return (
-    <div className="product-page-constraint">
-      <div className="flex flex-col items-center text-center mb-16">
-        <span className="text-base-regular text-gray-600 mb-6">
-          Productos relacionados
-        </span>
-        <p className="text-2xl-regular text-ui-fg-base max-w-lg">
-          También te pueden interesar.
-        </p>
-      </div>
+    <div>
+      <h2 className="mb-10 text-3xl font-bold text-anil small:text-4xl">
+        También te pueden interesar
+      </h2>
 
       <ul className="grid grid-cols-2 small:grid-cols-3 medium:grid-cols-4 gap-x-6 gap-y-8">
         {products.map((product) => (

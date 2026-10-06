@@ -1,21 +1,30 @@
-import { Heading, Text } from "@modules/common/components/ui"
-
-import InteractiveLink from "@modules/common/components/interactive-link"
+import LocalizedClientLink from "@modules/common/components/localized-client-link"
+import { Rombo } from "@modules/common/components/logo"
 
 const EmptyCartMessage = () => {
   return (
-    <div className="py-48 px-2 flex flex-col justify-center items-start" data-testid="empty-cart-message">
-      <Heading
-        level="h1"
-        className="flex flex-row text-3xl-regular gap-x-2 items-baseline"
-      >
-        Carrito
-      </Heading>
-      <Text className="text-base-regular mt-4 mb-6 max-w-[32rem]">
-        Tu carrito está vacío. Usa el enlace de abajo para ver nuestros productos.
-      </Text>
-      <div>
-        <InteractiveLink href="/store">Ver productos</InteractiveLink>
+    <div
+      className="mx-auto flex max-w-md flex-col items-center gap-5 py-24 text-center small:py-32"
+      data-testid="empty-cart-message"
+    >
+      <Rombo className="h-16 w-16" />
+      <h1 className="text-4xl font-extrabold text-anil">Tu carrito está vacío</h1>
+      <p className="text-lg text-ui-fg-subtle">
+        Elige una prenda, escoge tu talla y aparecerá aquí lista para pagar.
+      </p>
+      <div className="flex flex-wrap justify-center gap-3 pt-2">
+        <LocalizedClientLink
+          href="/store"
+          className="rounded-lg bg-cochinilla px-6 py-3.5 font-semibold text-white hover:bg-cochinilla-oscuro"
+        >
+          Ver productos
+        </LocalizedClientLink>
+        <LocalizedClientLink
+          href="/"
+          className="rounded-lg border border-anil/25 px-6 py-3.5 font-semibold text-anil hover:border-anil"
+        >
+          Volver al inicio
+        </LocalizedClientLink>
       </div>
     </div>
   )

@@ -15,7 +15,7 @@ export default function LibroDeReclamaciones() {
     <div className="content-container py-12 small:py-16">
       <div className="mx-auto max-w-2xl flex flex-col gap-y-8">
         <header className="flex flex-col gap-y-2">
-          <Heading level="h1" className="text-3xl">
+          <Heading level="h1" className="text-4xl font-extrabold text-anil small:text-5xl">
             Libro de Reclamaciones
           </Heading>
           <Text className="text-ui-fg-subtle">
@@ -24,7 +24,7 @@ export default function LibroDeReclamaciones() {
           </Text>
         </header>
 
-        <dl className="grid grid-cols-1 small:grid-cols-2 gap-4 rounded-lg bg-ui-bg-subtle p-4 txt-small">
+        <dl className="grid grid-cols-1 small:grid-cols-2 gap-4 rounded-2xl border-l-4 border-cochinilla bg-lana p-5 txt-small">
           <div>
             <dt className="text-ui-fg-muted">Proveedor</dt>
             <dd>{TIENDA.razonSocial}</dd>

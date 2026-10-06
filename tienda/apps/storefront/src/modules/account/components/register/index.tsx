@@ -20,7 +20,7 @@ const Register = ({ setCurrentView }: Props) => {
       className="max-w-sm flex flex-col items-center"
       data-testid="register-page"
     >
-      <h1 className="text-large-semi uppercase mb-6">
+      <h1 className="mb-4 text-3xl font-extrabold text-anil">
         Crea tu cuenta en Tienda Andina
       </h1>
       <p className="text-center text-base-regular text-ui-fg-base mb-4">

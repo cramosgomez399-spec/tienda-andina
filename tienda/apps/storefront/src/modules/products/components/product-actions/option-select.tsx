@@ -27,9 +27,12 @@ const OptionSelect: React.FC<OptionSelectProps> = ({
 
   return (
     <div className="flex flex-col gap-y-3">
-      <span className="text-sm">Elige {title.toLowerCase()}</span>
+      <span className="text-sm font-semibold text-anil">
+        Elige {title.toLowerCase()}
+        {current && <span className="font-normal text-ui-fg-subtle">{`: ${current}`}</span>}
+      </span>
       <div
-        className="flex flex-wrap justify-between gap-2"
+        className="flex flex-wrap gap-2"
         data-testid={dataTestId}
       >
         {filteredOptions.map((v) => {
@@ -37,11 +40,12 @@ const OptionSelect: React.FC<OptionSelectProps> = ({
             <button
               onClick={() => updateOption(option.id, v)}
               key={v}
+              aria-pressed={v === current}
               className={clx(
-                "border-ui-border-base bg-ui-bg-subtle border text-small-regular h-10 rounded-rounded p-2 flex-1 ",
+                "h-11 min-w-[3rem] flex-1 rounded-xl border-2 px-3 text-sm font-semibold transition-colors",
                 {
-                  "border-ui-border-interactive": v === current,
-                  "hover:shadow-elevation-card-rest transition-shadow ease-in-out duration-150":
+                  "border-anil bg-anil text-white": v === current,
+                  "border-ui-border-base bg-white text-anil hover:border-anil":
                     v !== current,
                 }
               )}

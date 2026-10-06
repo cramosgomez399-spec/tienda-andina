@@ -44,12 +44,12 @@ const HitPrice = ({ hit, currencyCode }: HitPriceProps) => {
         </Text>
       )}
       <Text
-        className={clx("text-ui-fg-muted", {
+        className={clx("font-semibold text-ui-fg-base", {
           "text-ui-tag-red-text": on_sale,
         })}
         data-testid="price"
       >
-        {isRange ? `${format(min_price)} - ${format(max)}` : format(min_price)}
+        {isRange ? `Desde ${format(min_price)}` : format(min_price)}
       </Text>
     </div>
   )

@@ -20,6 +20,12 @@ module.exports = {
         padding: "padding-top padding-right padding-bottom padding-left",
       },
       colors: {
+        // Tintes naturales andinos: la paleta de la marca.
+        anil: { DEFAULT: "#22306b", oscuro: "#18224f", claro: "#e8eaf5" },
+        cochinilla: { DEFAULT: "#b8174e", oscuro: "#96103f", claro: "#fbe7ee" },
+        qolle: { DEFAULT: "#f4b23a", claro: "#fdf1d8" },
+        chillca: { DEFAULT: "#2e7d5b", claro: "#e3f1ea" },
+        lana: "#f4f2f8",
         grey: {
           0: "#FFFFFF",
           5: "#F9FAFB",
@@ -58,7 +64,9 @@ module.exports = {
         "3xl": "2rem",
       },
       fontFamily: {
+        titulos: ["var(--font-titulos)", "Segoe UI", "sans-serif"],
         sans: [
+          "var(--font-texto)",
           "Inter",
           "-apple-system",
           "BlinkMacSystemFont",
