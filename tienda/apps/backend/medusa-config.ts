@@ -15,6 +15,32 @@ module.exports = defineConfig({
   },
   modules: [
     {
+      resolve: './src/modules/reclamaciones',
+    },
+    {
+      resolve: '@medusajs/medusa/notification',
+      options: {
+        // Con RESEND_API_KEY los correos salen de verdad; sin ella se registran en el log del servidor.
+        providers: [
+          process.env.RESEND_API_KEY
+            ? {
+                resolve: './src/modules/resend',
+                id: 'resend',
+                options: {
+                  channels: ['email'],
+                  apiKey: process.env.RESEND_API_KEY,
+                  from: process.env.EMAIL_FROM ?? 'Tienda Andina <onboarding@resend.dev>',
+                },
+              }
+            : {
+                resolve: '@medusajs/medusa/notification-local',
+                id: 'local',
+                options: { channels: ['email'] },
+              },
+        ],
+      },
+    },
+    {
       resolve: '@medusajs/medusa/payment',
       options: {
         // Mercado Pago (Checkout Pro) solo se registra si hay token; el pago manual del sistema

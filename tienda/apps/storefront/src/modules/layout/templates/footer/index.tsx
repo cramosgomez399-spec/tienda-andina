@@ -125,6 +125,15 @@ export default async function Footer() {
                     Carrito
                   </LocalizedClientLink>
                 </li>
+                <li>
+                  <LocalizedClientLink
+                    className="hover:text-ui-fg-base"
+                    href="/libro-de-reclamaciones"
+                    data-testid="libro-reclamaciones-link"
+                  >
+                    Libro de Reclamaciones
+                  </LocalizedClientLink>
+                </li>
               </ul>
             </div>
           </div>

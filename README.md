@@ -37,7 +37,7 @@ cd tienda/apps/backend && npm run dev
 cd tienda/apps/storefront && npm run dev
 ```
 
-Las credenciales del panel están en `credenciales-demo.local.md` (no se sube a git).
+Las credenciales del panel local están en `credenciales-demo.local.md` (no se sube a git).
 
 ## Datos de la demo
 
