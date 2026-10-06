@@ -21,6 +21,9 @@ Funciones: catálogo con tallas y colores, carrito, checkout con IGV, pagos con 
 
 Secretos de producción: `produccion.local.env` (no se sube a git). Variables del backend en Render y de la tienda en Vercel.
 Las migraciones nuevas se aplican desde la laptop apuntando `DATABASE_URL` a Supabase (`DATABASE_SSL=true npx medusa db:migrate`).
+Si cambia el índice de búsqueda (`src/search/`), además: `DATABASE_SSL=true npx medusa db:migrate:search --execute-all-search` y reiniciar el backend (el índice se llena al arrancar). El índice guarda precios en PEN.
+
+Diseño: paleta de tintes andinos (añil `#22306b`, cochinilla `#b8174e`, q'olle `#f4b23a`, chillca `#2e7d5b`) en `tailwind.config.js` y variables de Medusa en `globals.css`; títulos Bricolage Grotesque, texto Figtree. El panel abre en español por defecto (`src/admin/i18n/index.ts`).
 Para correos reales: crear una clave en [Resend](https://resend.com) y agregar `RESEND_API_KEY` (y `EMAIL_FROM` con un dominio verificado) en Render.
 
 ## Estructura
