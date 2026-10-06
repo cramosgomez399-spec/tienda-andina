@@ -1,6 +1,6 @@
 "use client"
 
-import { isManual, isStripeLike } from "@lib/constants"
+import { isManual, isMercadoPago, isStripeLike } from "@lib/constants"
 import { placeOrder } from "@lib/data/cart"
 import { HttpTypes } from "@medusajs/types"
 import { Button } from "@modules/common/components/ui"
@@ -8,6 +8,7 @@ import { useElements, useStripe } from "@stripe/react-stripe-js"
 import { useParams } from "next/navigation"
 import React, { useState } from "react"
 import ErrorMessage from "../error-message"
+import MercadoPagoPaymentButton from "./mercadopago"
 
 type PaymentButtonProps = {
   cart: HttpTypes.StoreCart
@@ -36,6 +37,8 @@ const PaymentButton: React.FC<PaymentButtonProps> = ({
           data-testid={dataTestId}
         />
       )
+    case isMercadoPago(paymentSession?.provider_id):
+      return <MercadoPagoPaymentButton cart={cart} notReady={notReady} />
     case isManual(paymentSession?.provider_id):
       return (
         <ManualTestPaymentButton notReady={notReady} data-testid={dataTestId} />

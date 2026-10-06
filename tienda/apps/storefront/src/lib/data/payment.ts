@@ -9,8 +9,11 @@ export const listCartPaymentMethods = async (regionId: string) => {
     ...(await getAuthHeaders()),
   }
 
+  // Se refresca cada minuto: con force-cache la lista quedaba congelada y no reflejaba
+  // los métodos que se activan o desactivan desde el panel.
   const next = {
     ...(await getCacheOptions("payment_providers")),
+    revalidate: 60,
   }
 
   return sdk.client
@@ -21,7 +24,6 @@ export const listCartPaymentMethods = async (regionId: string) => {
         query: { region_id: regionId },
         headers,
         next,
-        cache: "force-cache",
       }
     )
     .then(({ payment_providers }) =>

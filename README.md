@@ -44,7 +44,48 @@ Las credenciales del panel están en `credenciales-demo.local.md` (no se sube a 
 - Región **Perú**, moneda **PEN**, precios **con IGV (18 %) incluido**.
 - Envío estándar S/ 15 (3–5 días) y envío express Lima S/ 25 (24 h).
 - 4 productos (polo, polerón, jogger, short) con variantes de talla/color y 50 unidades de stock cada una.
-- Pago manual (sin dinero real). Las pasarelas peruanas (Culqi, Mercado Pago, Izipay) van como módulo de pago.
+- Métodos de pago: **Mercado Pago** (Checkout Pro, modo prueba) y pago manual de demo.
+
+## Pagos con Mercado Pago
+
+Módulo propio en `tienda/apps/backend/src/modules/mercadopago/` (proveedor de pagos de Medusa).
+
+```
+Tienda (Next.js)                      Backend (Medusa)                         Mercado Pago
+────────────────                      ────────────────                         ────────────
+Elige "Mercado Pago"  ──────────────► initiatePayment: crea preferencia ─────► /checkout/preferences
+                                      (external_reference = ID de la sesión,
+                                       monto y moneda del carrito)
+"Pagar con Mercado Pago" ─ abre ────────────────────────────────────────────► El cliente paga
+Consulta cada 4 s     ──────────────► GET /store/mercadopago/estado ─────────► /v1/payments/search
+Pago aprobado → placeOrder ─────────► authorizePayment: vuelve a buscar el
+                                      pago y exige aprobado + mismo monto
+                                      + misma moneda → crea el pedido
+```
+
+**Regla de seguridad:** el navegador nunca decide que algo se pagó. Medusa consulta a Mercado Pago al
+completar el carrito; si no hay un pago aprobado por el monto exacto, rechaza el pedido.
+
+**Configuración** (`tienda/apps/backend/.env`, ver `.env.template`):
+
+| Variable | Uso |
+|---|---|
+| `MERCADOPAGO_ACCESS_TOKEN` | Credencial de **prueba** del panel de desarrolladores (sección *Credenciales de prueba*) |
+| `MERCADOPAGO_PUBLIC_KEY` | Clave pública (para un futuro formulario de pago integrado) |
+| `MERCADOPAGO_RETURN_URL` | Solo producción: URL **HTTPS** a la que Mercado Pago devuelve al cliente (con `localhost` no lo permite) |
+| `MERCADOPAGO_WEBHOOK_URL` | Solo producción: `https://<backend>/hooks/payment/mercadopago_mercadopago` |
+
+Después de configurar el token: reiniciar el backend y ejecutar
+`npx medusa exec ./src/scripts/activar-mercadopago.ts` para habilitarlo en la región Perú.
+
+**Probar un pago** (tarjetas publicadas por Mercado Pago, sin dinero real):
+
+| Tarjeta | Número | CVV | Vence |
+|---|---|---|---|
+| Visa | 4009 1753 3280 6176 | 123 | 11/30 |
+| Mastercard | 5031 7557 3453 0604 | 123 | 11/30 |
+
+Titular **APRO** = pago aprobado · **OTHE** = rechazado · **CONT** = pendiente. DNI de prueba: 12345678.
 
 ## Problemas que se resolvieron al instalar (Windows)
 
