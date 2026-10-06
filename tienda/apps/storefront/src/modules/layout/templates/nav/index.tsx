@@ -31,8 +31,8 @@ export default async function Nav() {
         </ul>
       </div>
       <header className="relative h-16 mx-auto border-b bg-white/95 backdrop-blur border-ui-border-base">
-        <nav className="content-container text-ui-fg-subtle flex items-center justify-between gap-x-6 w-full h-full text-sm">
-          <div className="flex items-center gap-x-4 h-full">
+        <nav className="content-container text-ui-fg-subtle flex items-center justify-between gap-x-3 w-full h-full text-sm small:gap-x-6">
+          <div className="flex items-center gap-x-3 h-full min-w-0">
             <div className="h-full small:hidden">
               <SideMenu regions={regions} locales={locales} currentLocale={currentLocale} />
             </div>
@@ -62,7 +62,7 @@ export default async function Nav() {
             ))}
           </ul>
 
-          <div className="flex items-center gap-x-5 h-full justify-end">
+          <div className="flex items-center gap-x-3 h-full justify-end small:gap-x-5">
             <Search />
             <LocalizedClientLink
               className="hidden small:block font-medium hover:text-anil"
