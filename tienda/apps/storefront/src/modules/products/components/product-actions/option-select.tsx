@@ -1,3 +1,4 @@
+import { compararTallas } from "@lib/util/talla"
 import { HttpTypes } from "@medusajs/types"
 import { clx } from "@modules/common/components/ui"
 import React from "react"
@@ -19,11 +20,14 @@ const OptionSelect: React.FC<OptionSelectProps> = ({
   "data-testid": dataTestId,
   disabled,
 }) => {
-  const filteredOptions = (option.values ?? []).map((v) => v.value)
+  // Las tallas se muestran de menor a mayor; el resto de opciones mantiene el orden de la API.
+  const filteredOptions = (option.values ?? [])
+    .map((v) => v.value)
+    .sort(compararTallas)
 
   return (
     <div className="flex flex-col gap-y-3">
-      <span className="text-sm">Select {title}</span>
+      <span className="text-sm">Elige {title.toLowerCase()}</span>
       <div
         className="flex flex-wrap justify-between gap-2"
         data-testid={dataTestId}

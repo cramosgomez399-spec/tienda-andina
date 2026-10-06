@@ -110,3 +110,12 @@
     @apply text-[32px] leading-[44px] font-semibold;
   }
 }
+
+/* Diseño solo claro: fondo explícito para que ningún modo oscuro forzado deje el texto sin contraste. */
+:root {
+  color-scheme: only light;
+}
+
+body {
+  background-color: #ffffff;
+}

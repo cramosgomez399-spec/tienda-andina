@@ -6,9 +6,9 @@ import { listCollections } from "@lib/data/collections"
 import { getRegion } from "@lib/data/regions"
 
 export const metadata: Metadata = {
-  title: "Medusa Next.js Starter Template",
+  title: { absolute: "Tienda Andina — Ropa cómoda para el día a día" },
   description:
-    "A performant frontend ecommerce starter template with Next.js 15 and Medusa.",
+    "Ropa cómoda para el día a día. Envíos a todo el Perú con precios en soles e IGV incluido.",
 }
 
 export default async function Home(props: {

@@ -14,11 +14,11 @@ type ProductTabsProps = {
 const ProductTabs = ({ product }: ProductTabsProps) => {
   const tabs = [
     {
-      label: "Product Information",
+      label: "Información del producto",
       component: <ProductInfoTab product={product} />,
     },
     {
-      label: "Shipping & Returns",
+      label: "Envíos y devoluciones",
       component: <ShippingInfoTab />,
     },
   ]
@@ -51,21 +51,21 @@ const ProductInfoTab = ({ product }: ProductTabsProps) => {
             <p>{product.material ? product.material : "-"}</p>
           </div>
           <div>
-            <span className="font-semibold">Country of origin</span>
+            <span className="font-semibold">País de origen</span>
             <p>{product.origin_country ? product.origin_country : "-"}</p>
           </div>
           <div>
-            <span className="font-semibold">Type</span>
+            <span className="font-semibold">Tipo</span>
             <p>{product.type ? product.type.value : "-"}</p>
           </div>
         </div>
         <div className="flex flex-col gap-y-4">
           <div>
-            <span className="font-semibold">Weight</span>
+            <span className="font-semibold">Peso</span>
             <p>{product.weight ? `${product.weight} g` : "-"}</p>
           </div>
           <div>
-            <span className="font-semibold">Dimensions</span>
+            <span className="font-semibold">Medidas</span>
             <p>
               {product.length && product.width && product.height
                 ? `${product.length}L x ${product.width}W x ${product.height}H`
@@ -85,31 +85,27 @@ const ShippingInfoTab = () => {
         <div className="flex items-start gap-x-2">
           <FastDelivery />
           <div>
-            <span className="font-semibold">Fast delivery</span>
+            <span className="font-semibold">Envío rápido</span>
             <p className="max-w-sm">
-              Your package will arrive in 3-5 business days at your pick up
-              location or in the comfort of your home.
+              Tu pedido llega en 3 a 5 días hábiles a tu casa en todo el Perú, o en 24 horas en Lima Metropolitana con el envío express.
             </p>
           </div>
         </div>
         <div className="flex items-start gap-x-2">
           <Refresh />
           <div>
-            <span className="font-semibold">Simple exchanges</span>
+            <span className="font-semibold">Cambios sencillos</span>
             <p className="max-w-sm">
-              Is the fit not quite right? No worries - we&apos;ll exchange your
-              product for a new one.
+              ¿No te quedó bien la talla? No te preocupes, te lo cambiamos por otra.
             </p>
           </div>
         </div>
         <div className="flex items-start gap-x-2">
           <Back />
           <div>
-            <span className="font-semibold">Easy returns</span>
+            <span className="font-semibold">Devoluciones fáciles</span>
             <p className="max-w-sm">
-              Just return your product and we&apos;ll refund your money. No
-              questions asked – we&apos;ll do our best to make sure your return
-              is hassle-free.
+              Si no te convence, devuélvelo y te reembolsamos el dinero, sin complicaciones.
             </p>
           </div>
         </div>

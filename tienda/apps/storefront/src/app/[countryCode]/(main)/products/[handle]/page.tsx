@@ -45,7 +45,7 @@ export async function generateStaticParams() {
   } catch (error) {
     console.error(
       `Failed to generate static paths for product pages: ${
-        error instanceof Error ? error.message : "Unknown error"
+        error instanceof Error ? error.message : "Error desconocido"
       }.`
     )
     return []
@@ -88,10 +88,10 @@ export async function generateMetadata(props: Props): Promise<Metadata> {
   }
 
   return {
-    title: `${product.title} | Medusa Store`,
-    description: `${product.title}`,
+    title: product.title,
+    description: product.description ?? product.title,
     openGraph: {
-      title: `${product.title} | Medusa Store`,
+      title: `${product.title} | Tienda Andina`,
       description: `${product.title}`,
       images: product.thumbnail ? [product.thumbnail] : [],
     },

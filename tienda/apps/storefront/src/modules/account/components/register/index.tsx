@@ -21,39 +21,37 @@ const Register = ({ setCurrentView }: Props) => {
       data-testid="register-page"
     >
       <h1 className="text-large-semi uppercase mb-6">
-        Become a Medusa Store Member
+        Crea tu cuenta en Tienda Andina
       </h1>
       <p className="text-center text-base-regular text-ui-fg-base mb-4">
-        Create your Medusa Store Member profile, and get access to an enhanced
-        shopping experience.
+        Regístrate para comprar más rápido, guardar tus direcciones y seguir tus pedidos.
       </p>
       {message?.state === "verification_required" && (
         <div
           className="w-full mb-4 text-center text-base-regular text-ui-fg-base bg-ui-bg-subtle border border-ui-border-base rounded-rounded p-4"
           data-testid="register-verification-message"
         >
-          We sent a verification link to <strong>{message.email}</strong>.
-          Please check your inbox to verify your email, then sign in.
+          Enviamos un enlace de verificación a <strong>{message.email}</strong>. Revisa tu bandeja de entrada, verifica tu correo y luego inicia sesión.
         </div>
       )}
       <form className="w-full flex flex-col" action={formAction}>
         <div className="flex flex-col w-full gap-y-2">
           <Input
-            label="First name"
+            label="Nombre"
             name="first_name"
             required
             autoComplete="given-name"
             data-testid="first-name-input"
           />
           <Input
-            label="Last name"
+            label="Apellidos"
             name="last_name"
             required
             autoComplete="family-name"
             data-testid="last-name-input"
           />
           <Input
-            label="Email"
+            label="Correo electrónico"
             name="email"
             required
             type="email"
@@ -61,14 +59,14 @@ const Register = ({ setCurrentView }: Props) => {
             data-testid="email-input"
           />
           <Input
-            label="Phone"
+            label="Teléfono"
             name="phone"
             type="tel"
             autoComplete="tel"
             data-testid="phone-input"
           />
           <Input
-            label="Password"
+            label="Contraseña"
             name="password"
             required
             type="password"
@@ -81,33 +79,33 @@ const Register = ({ setCurrentView }: Props) => {
           data-testid="register-error"
         />
         <span className="text-center text-ui-fg-base text-small-regular mt-6">
-          By creating an account, you agree to Medusa Store&apos;s{" "}
+          Al crear una cuenta, aceptas la{" "}
           <LocalizedClientLink
             href="/content/privacy-policy"
             className="underline"
           >
-            Privacy Policy
+            Política de privacidad
           </LocalizedClientLink>{" "}
-          and{" "}
+          y los{" "}
           <LocalizedClientLink
             href="/content/terms-of-use"
             className="underline"
           >
-            Terms of Use
+            Términos de uso
           </LocalizedClientLink>
           .
         </span>
         <SubmitButton className="w-full mt-6" data-testid="register-button">
-          Join
+          Crear cuenta
         </SubmitButton>
       </form>
       <span className="text-center text-ui-fg-base text-small-regular mt-6">
-        Already a member?{" "}
+        ¿Ya tienes cuenta?{" "}
         <button
           onClick={() => setCurrentView(LOGIN_VIEW.SIGN_IN)}
           className="underline"
         >
-          Sign in
+          Iniciar sesión
         </button>
         .
       </span>

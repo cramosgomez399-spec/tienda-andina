@@ -6,6 +6,8 @@ import clsx from "clsx"
 import { useState } from "react"
 import { useRefinementList } from "react-instantsearch"
 
+import { compararTallas } from "@lib/util/talla"
+
 import { OPTION_VALUES_ATTRIBUTE } from "./attributes"
 
 const FACET_LIMIT = 200
@@ -47,7 +49,10 @@ function groupItems(
     })
   }
 
-  return Array.from(groups.values())
+  const lista = Array.from(groups.values())
+  // Después del orden alfabético, las tallas pasan a ir de menor a mayor.
+  lista.forEach((g) => g.values.sort((a, b) => compararTallas(a.label, b.label)))
+  return lista
 }
 
 const OptionRefinements = () => {

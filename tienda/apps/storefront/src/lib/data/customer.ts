@@ -154,7 +154,7 @@ async function completeLogin(
   if (typeof result === "object" && "location" in result) {
     return {
       state: "error",
-      error: "This login method isn't supported by the storefront.",
+      error: "Este método de inicio de sesión no está disponible.",
     }
   }
 
@@ -176,7 +176,7 @@ async function completeLogin(
   if (typeof result !== "string") {
     return {
       state: "error",
-      error: "Authentication requires additional steps that aren't supported.",
+      error: "La autenticación requiere pasos adicionales que no están disponibles.",
     }
   }
 
@@ -343,7 +343,7 @@ export const updateCustomerAddress = async (
     (currentState.addressId as string) || (formData.get("addressId") as string)
 
   if (!addressId) {
-    return { success: false, error: "Address ID is required" }
+    return { success: false, error: "Falta el ID de la dirección" }
   }
 
   const address = {

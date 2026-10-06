@@ -30,7 +30,7 @@ const OrderCard = ({ order }: OrderCardProps) => {
       </div>
       <div className="flex items-center divide-x divide-gray-200 text-small-regular text-ui-fg-base">
         <span className="pr-2" data-testid="order-created-at">
-          {new Date(order.created_at).toDateString()}
+          {new Date(order.created_at).toLocaleDateString("es-PE", { dateStyle: "long" })}
         </span>
         <span className="px-2" data-testid="order-amount">
           {convertToLocale({
@@ -69,14 +69,14 @@ const OrderCard = ({ order }: OrderCardProps) => {
             <span className="text-small-regular text-ui-fg-base">
               + {numberOfLines - 4}
             </span>
-            <span className="text-small-regular text-ui-fg-base">more</span>
+            <span className="text-small-regular text-ui-fg-base">más</span>
           </div>
         )}
       </div>
       <div className="flex justify-end">
         <LocalizedClientLink href={`/account/orders/details/${order.id}`}>
           <Button data-testid="order-details-link" variant="secondary">
-            See details
+            Ver detalle
           </Button>
         </LocalizedClientLink>
       </div>
