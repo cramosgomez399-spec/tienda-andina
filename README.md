@@ -3,6 +3,26 @@
 Demo de portafolio: tienda de ropa ficticia en soles (PEN) con IGV incluido, construida sobre
 [Medusa 2](https://medusajs.com) (motor de e-commerce en Node) y su tienda en Next.js.
 
+**En línea:**
+- Tienda: https://tienda-andina.vercel.app
+- API y panel de administración: https://tienda-andina-api.onrender.com/app
+- Libro de Reclamaciones: https://tienda-andina.vercel.app/pe/libro-de-reclamaciones
+
+Funciones: catálogo con tallas y colores, carrito, checkout con IGV, pagos con **Mercado Pago**
+(modo prueba), correos de confirmación, **Libro de Reclamaciones** virtual (Ley 29571) con su sección en el panel.
+
+## Producción (todo en planes gratuitos)
+
+| Pieza | Servicio | Notas |
+|---|---|---|
+| Base de datos | Supabase `tienda-andina` (São Paulo) | Usuario propio `medusa`; las tablas no se exponen en la API pública de Supabase. Se pausa tras 7 días sin uso: reactivar desde el panel de Supabase |
+| Backend + panel | Render `tienda-andina-api` (Virginia) | Se despliega solo con cada `git push` a `master`. Se duerme tras 15 min sin visitas (~1 min en despertar) |
+| Tienda | Vercel `tienda-andina` | `cd tienda/apps/storefront && npx vercel deploy --prod` |
+
+Secretos de producción: `produccion.local.env` (no se sube a git). Variables del backend en Render y de la tienda en Vercel.
+Las migraciones nuevas se aplican desde la laptop apuntando `DATABASE_URL` a Supabase (`DATABASE_SSL=true npx medusa db:migrate`).
+Para correos reales: crear una clave en [Resend](https://resend.com) y agregar `RESEND_API_KEY` (y `EMAIL_FROM` con un dominio verificado) en Render.
+
 ## Estructura
 
 ```
