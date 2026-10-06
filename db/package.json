@@ -1,0 +1,11 @@
+{
+  "name": "tienda-db",
+  "private": true,
+  "type": "module",
+  "scripts": {
+    "start": "node start.js"
+  },
+  "dependencies": {
+    "embedded-postgres": "^18.4.0-beta.17"
+  }
+}
