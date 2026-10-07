@@ -1,12 +1,22 @@
+"use client"
+
 import { HttpTypes } from "@medusajs/types"
 import Image from "next/image"
+import { useSearchParams } from "next/navigation"
+
+import { getImagesForVariant } from "@lib/util/imagenes-variante"
 
 type ImageGalleryProps = {
-  images: HttpTypes.StoreProductImage[]
+  product: HttpTypes.StoreProduct
 }
 
-// La primera foto ocupa todo el ancho; las demás van de a dos para ver más sin bajar tanto.
-const ImageGallery = ({ images }: ImageGalleryProps) => {
+// Las fotos se eligen en el navegador según la variante (?v_id=...), así cambiar de
+// color es instantáneo y no hace falta volver a pedir la página al servidor.
+// La primera foto ocupa todo el ancho; las demás van de a dos.
+const ImageGallery = ({ product }: ImageGalleryProps) => {
+  const searchParams = useSearchParams()
+  const images = getImagesForVariant(product, searchParams.get("v_id"))
+
   return (
     <div className="grid grid-cols-2 gap-3 small:gap-4">
       {images.map((image, index) => (

@@ -11,7 +11,7 @@ import { useParams, usePathname, useSearchParams } from "next/navigation"
 import { useEffect, useMemo, useRef, useState } from "react"
 import ProductPrice from "../product-price"
 import MobileActions from "./mobile-actions"
-import { useRouter } from "next/navigation"
+
 
 type ProductActionsProps = {
   product: HttpTypes.StoreProduct
@@ -32,7 +32,6 @@ export default function ProductActions({
   product,
   disabled,
 }: ProductActionsProps) {
-  const router = useRouter()
   const pathname = usePathname()
   const searchParams = useSearchParams()
 
@@ -89,7 +88,9 @@ export default function ProductActions({
       params.delete("v_id")
     }
 
-    router.replace(pathname + "?" + params.toString())
+    // Solo se actualiza la dirección en el navegador: la galería lee v_id por su cuenta
+    // y no hace falta volver a pedir la página al servidor (antes tardaba 1-2 s por clic).
+    window.history.replaceState(null, "", pathname + "?" + params.toString())
   }, [selectedVariant, isValidVariant])
 
   // check if the selected variant is in stock

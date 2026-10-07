@@ -1,0 +1,20 @@
+# Visita el backend cada pocos minutos para que Render (plan gratuito) no lo duerma.
+# Un servidor dormido tarda ~1-2 minutos en responder la primera visita.
+# Consulta las categorías (usa la base de datos), así Supabase tampoco se pausa por inactividad.
+# La clave publicable es pública por diseño: la tienda la envía desde el navegador.
+name: Mantener activo el backend
+
+on:
+  schedule:
+    - cron: "*/5 * * * *"
+  workflow_dispatch:
+
+jobs:
+  visitar:
+    runs-on: ubuntu-latest
+    timeout-minutes: 5
+    steps:
+      - name: Visitar el backend
+        run: |
+          curl -sS -o /dev/null -m 180 -w "health %{http_code} en %{time_total}s\n" https://tienda-andina-api.onrender.com/health
+          curl -sS -o /dev/null -m 60 -w "categorias %{http_code} en %{time_total}s\n"             -H "x-publishable-api-key: pk_2c3e80166920a524fe8d943bdc0a799f195a93c9fbd3d2557c8ce43cedf307d1"             https://tienda-andina-api.onrender.com/store/product-categories
